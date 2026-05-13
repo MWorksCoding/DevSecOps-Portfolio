@@ -12,6 +12,9 @@ jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: DevSecOps-Portfolio
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,7 +33,7 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: github-pages
+          path: DevSecOps-Portfolio/github-pages
 
   deploy:
     name: Deploy to GitHub Pages
