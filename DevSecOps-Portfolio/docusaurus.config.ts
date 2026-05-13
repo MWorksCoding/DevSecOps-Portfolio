@@ -5,31 +5,22 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'MK',
+  tagline: 'DevSecOps Portfolio',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  url: 'https://mworkscoding.github.io',
+  baseUrl: '/DevSecOps-Portfolio/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'MWorksCoding',
+  projectName: 'DevSecOps-Portfolio',
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -41,26 +32,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -69,27 +42,31 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'MK',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Dinosaur Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'projectsSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Projects',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          type: 'docSidebar',
+          sidebarId: 'owaspSidebar',
+          position: 'left',
+          label: 'OWASP Juice Shop',
+        },
+        {
+          href: 'https://github.com/MWorksCoding',
           label: 'GitHub',
           position: 'right',
         },
@@ -99,46 +76,34 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Projects',
           items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
+            {label: 'V-Server Setup', to: '/docs/projects/v-server-setup'},
+            {label: 'Baby Tools Shop', to: '/docs/projects/baby-tools-shop'},
+            {label: 'Truck Signs API', to: '/docs/projects/truck-signs-api'},
+            {label: 'Conduit', to: '/docs/projects/conduit/conduit-container-cicd'},
           ],
         },
         {
-          title: 'Community',
+          title: 'OWASP Juice Shop',
           items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+            {label: 'Login Admin', to: '/docs/owasp-juice-shop/login-admin'},
+            {label: 'Admin Registration', to: '/docs/owasp-juice-shop/admin-registration'},
+            {label: 'Meta Geo Stalking', to: '/docs/owasp-juice-shop/meta-geo-stalking'},
+            {label: 'Client Side XSS', to: '/docs/owasp-juice-shop/client-side-xss'},
           ],
         },
         {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/MWorksCoding',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} MK. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
