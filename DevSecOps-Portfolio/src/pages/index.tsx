@@ -1,46 +1,17 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import Heading from '@theme/Heading';
-
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/projects/v-server-setup">
-            View Projects
-          </Link>
-          <Link
-            className="button button--outline button--secondary button--lg"
-            to="/docs/owasp-juice-shop/login-admin"
-            style={{marginLeft: '1rem'}}>
-            OWASP Juice Shop
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import Hero from '@site/src/components/hero';
+import MySkills from '@site/src/components/my-skills';
+import MyProjects from '@site/src/components/my-projects';
+import Contact from '@site/src/components/contact';
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="DevSecOps Portfolio by MK">
-      <HomepageHeader />
+    <Layout title="MK — DevSecOps Engineer" description="DevSecOps Portfolio by MK">
+      <Hero />
+      <MySkills />
+      <MyProjects />
+      <Contact />
     </Layout>
   );
 }

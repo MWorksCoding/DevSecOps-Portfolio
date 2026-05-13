@@ -1,30 +1,73 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --portfolio-blue: #2563eb;
+  --portfolio-dark: #1b2333;
+  --portfolio-dark-card: #243050;
+  --portfolio-skill-card: #eef2ff;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --portfolio-skill-card: #243050;
+}
+
+/* ── Navbar ─────────────────────────────────────────── */
+.navbar {
+  background-color: var(--portfolio-blue);
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.navbar__brand,
+.navbar__title,
+.navbar__link,
+.navbar__item {
+  color: #ffffff !important;
+}
+
+.navbar__link:hover {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.navbar__toggle svg {
+  fill: #ffffff;
+}
+
+.navbar-sidebar {
+  background-color: var(--portfolio-blue);
+}
+
+.navbar-sidebar__brand,
+.navbar-sidebar__items .menu__link {
+  color: #ffffff;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.footer {
+  background-color: var(--portfolio-dark);
+  padding: 1.5rem 0;
+}
+
+.footer__title,
+.footer__link-item {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer__copyright {
+  color: rgba(255, 255, 255, 0.5);
 }
