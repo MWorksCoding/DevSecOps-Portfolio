@@ -2,11 +2,10 @@ name: CI/CD Workflow
 
 on:
   push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
+      - feature/docusaurus
 
 permissions:
   contents: write
