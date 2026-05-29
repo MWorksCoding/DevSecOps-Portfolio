@@ -15,28 +15,93 @@
   color: var(--ifm-heading-color);
 }
 
-/* ── Grid (desktop: 3 × 3, icon only) ───────────────── */
+/* ── Grid (desktop: 3 × 3) ───────────────────────────── */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
 }
 
+/* ── Card shell ──────────────────────────────────────── */
 .card {
+  position: relative;
+  overflow: hidden;
   background-color: var(--portfolio-skill-card);
   border-radius: 16px;
-  padding: 2rem 1rem 1.25rem;
+  min-height: 180px;
+  transition: background-color 0.25s ease;
+  cursor: default;
+}
+
+/* ── Front face (icon + label) ───────────────────────── */
+.cardFront {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  transition: transform 0.2s;
+  justify-content: center;
+  padding: 2rem 1rem 1.25rem;
+  opacity: 1;
+  transition: opacity 0.25s ease;
 }
 
+/* ── Back face (heading + bullets) ───────────────────── */
+.cardBack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 1.75rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* ── Hover state ─────────────────────────────────────── */
 .card:hover {
-  transform: translateY(-3px);
+  background-color: #4a78c4;
 }
 
+.card:hover .cardFront {
+  opacity: 0;
+}
+
+.card:hover .cardBack {
+  opacity: 1;
+}
+
+.backHeading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.points li {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.92);
+  padding-left: 1.1rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.points li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ── Icon ────────────────────────────────────────────── */
 .iconWrapper {
   width: 72px;
   height: 72px;
@@ -57,11 +122,7 @@
   font-weight: 600;
   color: var(--ifm-font-color-base);
   margin: 0;
-}
-
-/* Bullet points hidden on desktop, shown on mobile */
-.points {
-  display: none;
+  text-align: center;
 }
 
 /* ── Custom icons ────────────────────────────────────── */
@@ -73,7 +134,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .terminalPrompt {
@@ -82,11 +143,6 @@
   font-weight: 700;
   color: #1b2333;
   letter-spacing: -1px;
-}
-
-.shieldIcon {
-  width: 64px;
-  height: 64px;
 }
 
 .yamlIcon {
@@ -120,7 +176,7 @@
   }
 }
 
-/* ── Mobile: 1 column, show bullet points ────────────── */
+/* ── Mobile: 1 column, static layout (no hover flip) ── */
 @media (max-width: 600px) {
   .section {
     padding: 3rem 1.5rem;
@@ -130,13 +186,30 @@
     grid-template-columns: 1fr;
   }
 
+  /* Reset positioning — stack front and back naturally */
   .card {
+    min-height: unset;
+    overflow: visible;
+  }
+
+  .cardFront {
+    position: static;
     flex-direction: row;
     align-items: flex-start;
-    text-align: left;
-    padding: 1.25rem;
+    justify-content: flex-start;
+    padding: 1.25rem 1.25rem 0;
     gap: 1rem;
-    flex-wrap: wrap;
+    opacity: 1 !important;
+  }
+
+  .cardBack {
+    position: static;
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+    opacity: 1 !important;
+  }
+
+  .card:hover {
+    background-color: var(--portfolio-skill-card);
   }
 
   .iconWrapper {
@@ -160,11 +233,6 @@
     font-size: 1rem;
   }
 
-  .shieldIcon {
-    width: 48px;
-    height: 48px;
-  }
-
   .yamlIcon {
     width: 48px;
     height: 48px;
@@ -178,32 +246,20 @@
   .label {
     font-size: 1rem;
     font-weight: 700;
+    text-align: left;
     flex: 1;
     padding-top: 0.15rem;
   }
 
-  .points {
-    display: block;
-    width: 100%;
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
+  .backHeading {
+    display: none;
   }
 
   .points li {
-    font-size: 0.875rem;
     color: var(--ifm-font-color-base);
-    padding-left: 1.1rem;
-    position: relative;
-    margin-bottom: 0.4rem;
-    line-height: 1.5;
   }
 
   .points li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
     color: var(--portfolio-blue);
-    font-weight: 700;
   }
 }

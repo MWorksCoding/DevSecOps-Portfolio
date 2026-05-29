@@ -22,7 +22,7 @@
 }
 
 .greeting {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 0.5rem;
   font-weight: 400;
@@ -45,7 +45,7 @@
 }
 
 .bio {
-  font-size: 0.95rem;
+  font-size: 1.20rem;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 2rem;
@@ -77,12 +77,12 @@
 }
 
 .photo {
-  width: 320px;
-  height: 320px;
+  width: 400px;
+  height: 480px;
   object-fit: contain;
   border-radius: 20px;
   padding: 20px 20px 0 20px;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, #2563eb 5%, #ffffff 85%);
   display: block;
 }
 

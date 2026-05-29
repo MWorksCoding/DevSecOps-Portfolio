@@ -68,7 +68,7 @@
 
 .contactLink:hover {
   color: #ffffff;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .iconCircle {

@@ -1,10 +1,12 @@
 import type {ReactNode} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import {useColorMode} from '@docusaurus/theme-common';
 import styles from './my-skills.module.css';
 
 interface Skill {
   title: string;
   iconSrc: string;
+  iconSrcLight?: string;
   customIcon?: ReactNode;
   points: string[];
 }
@@ -14,15 +16,6 @@ function TerminalIcon(): ReactNode {
     <div className={styles.terminalIcon}>
       <span className={styles.terminalPrompt}>&gt;_</span>
     </div>
-  );
-}
-
-function ShieldIcon(): ReactNode {
-  return (
-    <svg className={styles.shieldIcon} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L4 6v5c0 5.25 3.4 10.15 8 11.35C16.6 21.15 20 16.25 20 11V6L12 2z" fill="#2563eb" />
-      <path d="M10 17l-4-4 1.41-1.42L10 14.17l6.59-6.58L18 9l-8 8z" fill="white" />
-    </svg>
   );
 }
 
@@ -40,95 +33,92 @@ const ICON_BASE = '/img/skills/';
 const skills: Skill[] = [
   {
     title: 'HTML',
-    iconSrc: `${ICON_BASE}html.svg`,
+    iconSrc: `${ICON_BASE}HTML.png`,
     points: [
-      'Structuring Docusaurus documentation with semantic markup',
-      'Building MDX components for interactive documentation',
-      'Creating accessible, standards-compliant web pages',
-      'Writing custom page layouts for the Docusaurus portfolio',
+      'User-friendly navigation menus',
+      'Responsive web design',
+      'Contact forms and login pages',
+      'Transitions, animations and hover effect',
     ],
   },
   {
     title: 'CSS',
-    iconSrc: `${ICON_BASE}css.svg`,
+    iconSrc: `${ICON_BASE}CSS.png`,
     points: [
-      'Styling React components using CSS Modules for scoped styles',
-      'Building responsive layouts with Flexbox and CSS Grid',
-      'Customizing Docusaurus themes with CSS custom properties',
-      'Designing mobile-first, accessible user interfaces',
+      'User-friendly navigation menus',
+      'Responsive web design',
+      'Contact forms and login pages',
+      'Transitions, animations and hover effect',
     ],
   },
   {
     title: 'Static site generator',
-    iconSrc: `${ICON_BASE}docusaurus.svg`,
+    iconSrc: `${ICON_BASE}Group.png`,
     points: [
-      'Building this DevSecOps portfolio using Docusaurus',
-      'Configuring multi-sidebar documentation structures',
-      'Deploying static sites automatically to GitHub Pages',
-      'Authoring documentation in MDX with embedded React components',
+      'Search functionality',
+      'Static website and customization',
+      'Tags, categories, and RSS feeds',
+      'Translation',
     ],
   },
   {
     title: 'Python',
-    iconSrc: `${ICON_BASE}python.svg`,
+    iconSrc: `${ICON_BASE}Python.png`,
     points: [
-      'Containerizing Django applications for production deployment',
-      'Building REST APIs for e-commerce backends (Truck Signs API)',
-      'Configuring Gunicorn WSGI servers for production use',
-      'Automating database migrations and superuser creation on startup',
+      'Build APIs',
+      'Spam filtering, recommendation systems',
+      'Automate software testing',
+      'Using libraries like Tkinter, PyQt, or Kivy',
     ],
   },
   {
     title: 'Shell scripting',
-    iconSrc: '',
-    customIcon: <TerminalIcon />,
+    iconSrc: `${ICON_BASE}Terminal.png`,
+    iconSrcLight: `${ICON_BASE}Terminal_dark.png`,
     points: [
-      'Automating V-Server setup and SSH key configuration',
-      'Hardening servers by disabling password authentication',
-      'Writing CI/CD pipeline scripts for Docker deployments',
-      'Managing containers, networks, and volumes via CLI commands',
+      'Adding new users and setting their permissions',
+      'Performing calculations or running statistical analysis on data',
+      'Conditional statements, loops, functions',
     ],
   },
   {
     title: 'Yaml',
-    iconSrc: '',
-    customIcon: <YamlIcon />,
+    iconSrc: `${ICON_BASE}YAML.png`,
+    iconSrcLight: `${ICON_BASE}YAML_dark.png`,
     points: [
-      'Writing GitHub Actions workflows for CI/CD pipelines',
-      'Configuring multi-service Docker Compose stacks',
-      'Defining environment-specific deployment configurations',
-      'Managing reusable workflow templates for automated deployments',
+      'A Kubernetes deployment',
+      'Store settings like database connections',
+      'Environment-specific variables',
+      'Complex data structures represent lists and maps',
     ],
   },
   {
     title: 'Container',
-    iconSrc: `${ICON_BASE}docker.svg`,
+    iconSrc: `${ICON_BASE}Docker.png`,
     points: [
-      'Containerizing Django, Angular, and Minecraft server applications',
-      'Orchestrating multi-container stacks with Docker Compose',
-      'Publishing images to GitHub Container Registry (GHCR)',
-      'Managing Docker networks and volumes for data persistence',
+      'CI/CD pipelines',
+      'Automate building, testing, deploying applications',
+      'Build microservices-based applications',
     ],
   },
   {
     title: 'CI/CD with GitHub Actions',
-    iconSrc: `${ICON_BASE}githubactions.svg`,
+    iconSrc: `${ICON_BASE}GitHub_Actions.png`,
     points: [
-      'Automating builds and deployments with GitHub Actions',
-      'Deploying to GitHub Pages and VPS servers via SSH',
-      'Auto-creating pull requests for feature branches',
-      'Building and pushing Docker images to GHCR on every commit',
+      'Automated builds and tests',
+      'Pre-built actions for common tasks',
+      'Push, pull request, or schedule',
+      'Automated deployments',
     ],
   },
   {
     title: 'IT Security',
-    iconSrc: '',
-    customIcon: <ShieldIcon />,
+    iconSrc: `${ICON_BASE}IT_Security.png`,
     points: [
-      'Identifying SQL Injection, XSS, and Mass Assignment vulnerabilities',
-      'Intercepting and manipulating HTTP requests with Burp Suite',
-      'Analysing OWASP Top 10 vulnerabilities in Juice Shop CTF',
-      'Implementing SSH hardening and disabling password-based auth',
+      'Simulate attacks and identify vulnerabilities',
+      'Setting up multi-factor authentication',
+      'Login security',
+      'Implement authentication and authorization mechanisms',
     ],
   },
 ];
@@ -139,23 +129,37 @@ interface SkillCardProps {
 }
 
 function SkillCard({skill, iconBasePath}: SkillCardProps): ReactNode {
+  const {colorMode} = useColorMode();
+  const resolvedSrc =
+    colorMode === 'light' && skill.iconSrcLight
+      ? `${iconBasePath}${skill.iconSrcLight.replace(ICON_BASE, '')}`
+      : `${iconBasePath}${skill.iconSrc.replace(ICON_BASE, '')}`;
+
   return (
     <div className={styles.card}>
-      <div className={styles.iconWrapper}>
-        {skill.customIcon ?? (
-          <img
-            src={`${iconBasePath}${skill.iconSrc.replace(ICON_BASE, '')}`}
-            alt={skill.title}
-            className={styles.icon}
-          />
-        )}
+      {/* Front face: icon + label */}
+      <div className={styles.cardFront}>
+        <div className={styles.iconWrapper}>
+          {skill.customIcon ?? (
+            <img
+              src={resolvedSrc}
+              alt={skill.title}
+              className={styles.icon}
+            />
+          )}
+        </div>
+        <p className={styles.label}>{skill.title}</p>
       </div>
-      <p className={styles.label}>{skill.title}</p>
-      <ul className={styles.points}>
-        {skill.points.map((point, idx) => (
-          <li key={idx}>{point}</li>
-        ))}
-      </ul>
+
+      {/* Back face: heading + bullet points */}
+      <div className={styles.cardBack}>
+        <p className={styles.backHeading}>How I used this skill</p>
+        <ul className={styles.points}>
+          {skill.points.map((point, idx) => (
+            <li key={idx}>{point}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 :root {
+  --ifm-font-family-base: 'Quicksand', sans-serif;
+  --ifm-heading-font-family: 'Quicksand', sans-serif;
+  --ifm-font-family-monospace: 'Quicksand', sans-serif;
   --ifm-color-primary: #2563eb;
   --ifm-color-primary-dark: #1d4ed8;
   --ifm-color-primary-darker: #1e40af;
@@ -26,6 +31,11 @@
   --portfolio-skill-card: #243050;
 }
 
+/* ── Smooth scroll ──────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ── Navbar ─────────────────────────────────────────── */
 .navbar {
   background-color: var(--portfolio-blue);
@@ -41,7 +51,8 @@
 }
 
 .navbar__link:hover {
-  color: rgba(255, 255, 255, 0.75) !important;
+  border-top: transparent 2px solid !important;
+  border-bottom: #ffffff 2px solid !important;
 }
 
 .navbar__toggle svg {
