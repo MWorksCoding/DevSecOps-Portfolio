@@ -12,16 +12,7 @@ export default function Hero(): ReactNode {
             <h1 className={styles.name}>Marius Katzer</h1>
             <p className={styles.title}>DevSecOps Engineer</p>
             <p className={styles.bio}>
-              I am a German speaking Web Developer from Hanau, Germany, who loves
-              building web apps with JavaScript &amp; Angular. Feel free to take a
-              look at some of my projects that show you my experience with
-              programming. Starting with VBA (Visual Basic for Applications) to
-              accelerate and automate work processes. I realized programming helps to
-              increase productivity and profits in the company. So I decided to join
-              the Developer Academy in Munich to deepen my knowledge and skills in
-              programming as a front-end developer. Automation is the key to the
-              future. With this perspective I want to help companies to be profitable
-              in the future through my skills.
+              I'm a Fullstack Developer turned DevSecOps Engineer based in Hanau, Germany. Since 2023 I've been working as a certified Frontend Developer at manufacturing industry, where I design and maintain internal and external Angular applications in an agile team. My backend experience covers Python, Django and REST APIs, paired with solid knowledge of PostgreSQL, HTTP, CORS and SSL. Through the Developer Akademie's DevSecOps programme I extended my skill set into containerisation with Docker, infrastructure automation through Shell scripting and YAML, Linux server administration, and application security with OWASP. I believe that security and automation are not afterthoughts — they belong at every stage of the development lifecycle. I'm excited to bring that full-stack perspective to a team that thinks the same way.
             </p>
             <a href="#contact" className={styles.ctaButton}>
               Contact me

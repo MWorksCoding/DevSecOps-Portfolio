@@ -47,23 +47,31 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'MK',
+      title: 'K',
       logo: {
-        alt: 'Dinosaur Logo',
-        src: 'img/logo.svg',
+        alt: 'MK Logo',
+        src: 'img/skills/logo2_white.png',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'projectsSidebar',
+          href: '/#about-me',
+          label: 'About me',
           position: 'left',
-          label: 'Projects',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'owaspSidebar',
+          href: '/#my-skills',
+          label: 'My skills',
           position: 'left',
-          label: 'OWASP Juice Shop',
+        },
+        {
+          href: '/#my-projects',
+          label: 'My projects',
+          position: 'left',
+        },
+        {
+          href: '/#contact',
+          label: 'Contact',
+          position: 'left',
         },
         {
           href: 'https://github.com/MWorksCoding',
@@ -100,10 +108,14 @@ const config: Config = {
               label: 'GitHub',
               href: 'https://github.com/MWorksCoding',
             },
+            {
+              label: 'Legal Notice',
+              to: '/legal-notice',
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} MK. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Marius Katzer`,
     },
     prism: {
       theme: prismThemes.github,

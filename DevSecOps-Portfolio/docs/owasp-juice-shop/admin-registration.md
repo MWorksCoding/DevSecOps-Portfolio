@@ -50,7 +50,7 @@ The server accepted the request and created the account with administrator privi
 - Any anonymous visitor can self-register an admin account
 - Bypasses all role-based access control
 - Grants immediate access to the admin panel and all privileged API endpoints
-- Requires zero prior knowledge — only Burp Suite and one registration attempt
+- Requires zero prior knowledge - only Burp Suite and one registration attempt
 
 ## Video
 

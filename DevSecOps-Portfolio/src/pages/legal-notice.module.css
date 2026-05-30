@@ -1,0 +1,78 @@
+.page {
+  padding: 4rem 2rem;
+  background-color: var(--ifm-background-color);
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  color: var(--ifm-heading-color);
+  line-height: 1.75;
+}
+
+.container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.container h1:first-child {
+  margin-top: 0;
+}
+
+.container h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--ifm-heading-color);
+}
+
+.container h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+  color: var(--ifm-heading-color);
+}
+
+.container h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.3rem;
+  color: var(--ifm-heading-color);
+}
+
+.container p,
+.container li {
+  font-size: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.container ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.container li {
+  margin-bottom: 0.5rem;
+}
+
+.container a {
+  color: var(--ifm-color-primary);
+}
+
+.container hr {
+  border: none;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  margin: 3rem 0;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 2.5rem 1.25rem;
+  }
+}

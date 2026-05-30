@@ -1,17 +1,18 @@
 import {useState, type ReactNode} from 'react';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './my-projects.module.css';
 
 interface ProjectTag {
   label: string;
+  iconFile: string;
 }
 
 interface Project {
   title: string;
   description: string;
   tags: ProjectTag[];
-  thumbColor: string;
-  thumbLabel: string;
+  thumbFile: string;
   docsHref: string;
   githubHref: string;
 }
@@ -21,9 +22,12 @@ const projects: Project[] = [
     title: 'Baby Tools Shop',
     description:
       'A Django web application containerized with Docker, served via Gunicorn and WhiteNoise. Deployable on any V-Server with a single Docker run command.',
-    tags: [{label: 'Python'}, {label: 'Django'}, {label: 'Container'}],
-    thumbColor: '#092e20',
-    thumbLabel: '🛒',
+    tags: [
+      {label: 'Shell scripting', iconFile: 'Terminal.png'},
+      {label: 'Python', iconFile: 'Python.png'},
+      {label: 'Container', iconFile: 'Docker.png'},
+    ],
+    thumbFile: 'baby_tools_shop.png',
     docsHref: '/docs/projects/baby-tools-shop',
     githubHref: 'https://github.com/MWorksCoding/baby-tools-shop',
   },
@@ -31,9 +35,13 @@ const projects: Project[] = [
     title: 'Truck Signs API',
     description:
       'Full Django REST backend with a dedicated PostgreSQL container, networked via Docker and exposed via Gunicorn on port 8020.',
-    tags: [{label: 'Python'}, {label: 'PostgreSQL'}, {label: 'Container'}],
-    thumbColor: '#0d1f2d',
-    thumbLabel: '🚛',
+    tags: [
+      {label: 'YAML', iconFile: 'YAML.png'},
+      {label: 'Shell scripting', iconFile: 'Terminal.png'},
+      {label: 'Python', iconFile: 'Python.png'},
+      {label: 'Container', iconFile: 'Docker.png'},
+    ],
+    thumbFile: 'truck_signs.png',
     docsHref: '/docs/projects/truck-signs-api',
     githubHref: 'https://github.com/MWorksCoding/truck_signs_api',
   },
@@ -41,9 +49,11 @@ const projects: Project[] = [
     title: 'OWASP Juice Shop',
     description:
       'Hands-on security challenges covering SQL Injection, Mass Assignment, OSINT via EXIF metadata, and Stored XSS — all documented with exploit payloads and recommendations.',
-    tags: [{label: 'IT Security'}, {label: 'Burp Suite'}, {label: 'OWASP'}],
-    thumbColor: '#1a2a1a',
-    thumbLabel: '🔐',
+    tags: [
+      {label: 'Shell scripting', iconFile: 'Terminal.png'},
+      {label: 'IT Security', iconFile: 'IT_Security.png'},
+    ],
+    thumbFile: 'owasp_juice_shop.png',
     docsHref: '/docs/owasp-juice-shop/login-admin',
     githubHref: 'https://github.com/juice-shop/juice-shop',
   },
@@ -51,9 +61,12 @@ const projects: Project[] = [
     title: 'Minecraft Server',
     description:
       'A Docker-powered Minecraft server built manually from the official JAR — no ready-made images. Includes a Python mcstatus checker to query the server state.',
-    tags: [{label: 'YAML'}, {label: 'Shell scripting'}, {label: 'Container'}],
-    thumbColor: '#2d5a27',
-    thumbLabel: '🎮',
+    tags: [
+      {label: 'YAML', iconFile: 'YAML.png'},
+      {label: 'Shell scripting', iconFile: 'Terminal.png'},
+      {label: 'Container', iconFile: 'Docker.png'},
+    ],
+    thumbFile: 'Minecraft.png',
     docsHref: '/docs/projects/minecraft-server',
     githubHref: 'https://github.com/MWorksCoding/minecraft-server',
   },
@@ -61,9 +74,12 @@ const projects: Project[] = [
     title: 'WordPress Docker',
     description:
       'A fully containerized WordPress + MariaDB environment using Docker Compose. One command to build, one to start — ready for local dev or production on a V-Server.',
-    tags: [{label: 'YAML'}, {label: 'Shell scripting'}, {label: 'Container'}],
-    thumbColor: '#21759b',
-    thumbLabel: '📝',
+    tags: [
+      {label: 'YAML', iconFile: 'YAML.png'},
+      {label: 'Shell scripting', iconFile: 'Terminal.png'},
+      {label: 'Container', iconFile: 'Docker.png'},
+    ],
+    thumbFile: 'Wordpress.png',
     docsHref: '/docs/projects/wordpress-docker',
     githubHref: 'https://github.com/MWorksCoding/wordpress-docker',
   },
@@ -72,6 +88,7 @@ const projects: Project[] = [
 export default function MyProjects(): ReactNode {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = projects[activeIndex];
+  const iconBase = useBaseUrl('img/skills/');
 
   return (
     <section id="my-projects" className={styles.section}>
@@ -102,17 +119,19 @@ export default function MyProjects(): ReactNode {
               <h3 className={styles.cardTitle}>{active.title}</h3>
               <div className={styles.tags}>
                 {active.tags.map((tag) => (
-                  <span key={tag.label} className={styles.tag}>{tag.label}</span>
+                  <span key={tag.label} className={styles.tag}>
+                    <img src={iconBase + tag.iconFile} alt={tag.label} className={styles.tagIcon} />
+                    {tag.label}
+                  </span>
                 ))}
               </div>
             </div>
             <div className={styles.cardBody}>
-              <div
+              <img
+                src={iconBase + active.thumbFile}
+                alt={active.title}
                 className={styles.thumbnail}
-                style={{backgroundColor: active.thumbColor}}
-              >
-                <span className={styles.thumbEmoji}>{active.thumbLabel}</span>
-              </div>
+              />
               <p className={styles.description}>{active.description}</p>
             </div>
             <div className={styles.cardActions}>

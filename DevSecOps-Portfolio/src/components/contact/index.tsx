@@ -4,7 +4,7 @@ import styles from './contact.module.css';
 function EmailIcon(): ReactNode {
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="24" height="24" rx="12" fill="#2563eb" />
+      <rect width="24" height="24" rx="12" fill="#266ad9" />
       <path
         d="M5 8.5l7 5 7-5"
         stroke="white"
@@ -28,7 +28,7 @@ function EmailIcon(): ReactNode {
 function LinkedInIcon(): ReactNode {
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="24" height="24" rx="12" fill="#2563eb" />
+      <rect width="24" height="24" rx="12" fill="#266ad9" />
       <path
         d="M7 10h2v7H7v-7zm1-1.5a1 1 0 110-2 1 1 0 010 2zM11 10h1.9v1h.02c.27-.5.93-1 1.88-1C16.6 10 17 11.18 17 12.89V17h-2v-3.7c0-.88-.02-2.01-1.22-2.01-1.23 0-1.42.96-1.42 1.95V17H11v-7z"
         fill="white"
@@ -43,15 +43,21 @@ export default function Contact(): ReactNode {
       <div className={styles.container}>
         <div className={styles.layout}>
 
+
           <div className={styles.left}>
             <h2 className={styles.heading}>Contact me</h2>
-            <p className={styles.intro}>Include information like:</p>
-            <ul className={styles.bullets}>
-              <li>Feel free to reach out with job offers or opportunities</li>
-              <li>What role are you looking for?</li>
-              <li>How will you contribute to the new team?</li>
-              <li>Are you open for remote work or even relocation?</li>
-            </ul>
+            <p className={styles.intro}>
+              I'm a Fullstack Developer with a strong focus on DevSecOps, combining years of Angular
+              and Python experience with a growing passion for containers, automation, and secure
+              infrastructure. I enjoy understanding systems end to end, from the frontend all the way
+              down to the pipeline that ships it.
+            </p>
+            <p className={styles.intro}>
+              I'm looking for a role where I can keep growing in the DevSecOps space, whether that's
+              on-site, hybrid, or remote. If you're building something reliable and want someone who
+              brings both a developer's and an engineer's perspective to the table, I'd love to hear
+              from you.
+            </p>
           </div>
 
           <div className={styles.right}>
@@ -81,6 +87,16 @@ export default function Contact(): ReactNode {
           </div>
 
         </div>
+      </div>
+
+      {/* Scroll-to-top button */}
+      <div className={styles.scrollTopWrapper}>
+        <a href="#about-me" className={styles.scrollTopBtn} aria-label="Back to top">
+          <svg width="40" height="90" viewBox="0 0 40 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="39" height="89" rx="19.5" stroke="currentColor"/>
+            <path d="M19 70C19 70.5523 19.4477 71 20 71C20.5523 71 21 70.5523 21 70H19ZM20 20L14.2265 30H25.7735L20 20ZM21 70L21 29H19L19 70H21Z" fill="currentColor"/>
+          </svg>
+        </a>
       </div>
     </section>
   );
