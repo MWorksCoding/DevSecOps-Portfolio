@@ -40,7 +40,7 @@ This portfolio documents my practical work throughout the Developer Akademie Dev
 
 Initial setup and hardening of a Linux V-Server - covering SSH key authentication, firewall configuration, and basic server administration.
 
-→ [Documentation](./docs/projects/v-server-setup.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/projects/v-server-setup.md)
 
 ---
 
@@ -50,7 +50,7 @@ A Django web application containerised with Docker, served via Gunicorn and Whit
 
 **Stack:** Python · Django · Docker
 
-→ [Documentation](./docs/projects/baby-tools-shop.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/projects/baby-tools-shop.md)
 
 ---
 
@@ -60,7 +60,7 @@ A full Django REST backend with a dedicated PostgreSQL container, networked via 
 
 **Stack:** Python · Django REST Framework · PostgreSQL · Docker
 
-→ [Documentation](./docs/projects/truck-signs-api.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/projects/truck-signs-api.md)
 
 ---
 
@@ -70,7 +70,7 @@ A Docker-powered Minecraft server built manually from the official JAR - no read
 
 **Stack:** Docker · Shell scripting · Python · YAML
 
-→ [Documentation](./docs/projects/minecraft-server.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/projects/minecraft-server.md)
 
 ---
 
@@ -80,7 +80,7 @@ A fully containerised WordPress + MariaDB environment using Docker Compose. One 
 
 **Stack:** Docker Compose · YAML · Shell scripting
 
-→ [Documentation](./docs/projects/wordpress-docker.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/projects/wordpress-docker.md)
 
 ---
 
@@ -90,7 +90,7 @@ CI/CD pipeline implementation for the Conduit application using containers and a
 
 **Stack:** Docker · GitHub Actions · YAML
 
-→ [Documentation](./docs/projects/conduit/conduit-container-cicd.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/projects/conduit/conduit-container-cicd.md)
 
 ---
 
@@ -108,7 +108,7 @@ The login form passes unsanitised user input directly into a SQL query. Injectin
 
 **Risk:** SQL Injection allows attackers to bypass authentication, extract or destroy entire databases, and in some configurations execute arbitrary OS commands - making it one of the most critical vulnerability classes in web applications.
 
-→ [Documentation](./docs/owasp-juice-shop/login-admin.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/owasp-juice-shop/login-admin.md)
 
 ---
 
@@ -120,7 +120,7 @@ The registration API returns the full internal user object including the `role` 
 
 **Risk:** Mass Assignment vulnerabilities allow attackers to overwrite internal object properties that were never intended to be user-controlled. In the worst case this means full privilege escalation from anonymous visitor to platform administrator in a single request.
 
-→ [Documentation](./docs/owasp-juice-shop/admin-registration.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/owasp-juice-shop/admin-registration.md)
 
 ---
 
@@ -132,7 +132,7 @@ A user's email is found via public product reviews. Their uploaded image on the 
 
 **Risk:** Metadata in uploaded files can silently expose precise geolocation, device information, and timestamps. Combined with public profile data this enables full account takeover without any traditional "hacking" - illustrating that OSINT is often the most effective attack vector.
 
-→ [Documentation](./docs/owasp-juice-shop/meta-geo-stalking.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/owasp-juice-shop/meta-geo-stalking.md)
 
 ---
 
@@ -144,7 +144,7 @@ The registration UI validates the email field client-side only. By intercepting 
 
 **Risk:** Stored XSS persists in the database and executes for every user who loads the affected page - including administrators. This enables session hijacking, credential theft, and can serve as a launchpad for further attacks against internal infrastructure.
 
-→ [Documentation](./docs/owasp-juice-shop/client-side-xss.md)
+→ [Documentation](./DevSecOps-Portfolio/docs/owasp-juice-shop/client-side-xss.md)
 
 ---
 
