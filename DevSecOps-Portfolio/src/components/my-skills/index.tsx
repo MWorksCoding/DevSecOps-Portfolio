@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import {useState, useRef, type ReactNode} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useColorMode} from '@docusaurus/theme-common';
 import styles from './my-skills.module.css';
@@ -123,6 +123,12 @@ const skills: Skill[] = [
   },
 ];
 
+const SKILLS_PER_SLIDE = 3;
+const slides = Array.from(
+  {length: Math.ceil(skills.length / SKILLS_PER_SLIDE)},
+  (_, i) => skills.slice(i * SKILLS_PER_SLIDE, i * SKILLS_PER_SLIDE + SKILLS_PER_SLIDE),
+);
+
 interface SkillCardProps {
   skill: Skill;
   iconBasePath: string;
@@ -137,21 +143,14 @@ function SkillCard({skill, iconBasePath}: SkillCardProps): ReactNode {
 
   return (
     <div className={styles.card}>
-      {/* Front face: icon + label */}
       <div className={styles.cardFront}>
         <div className={styles.iconWrapper}>
           {skill.customIcon ?? (
-            <img
-              src={resolvedSrc}
-              alt={skill.title}
-              className={styles.icon}
-            />
+            <img src={resolvedSrc} alt={skill.title} className={styles.icon} />
           )}
         </div>
         <p className={styles.label}>{skill.title}</p>
       </div>
-
-      {/* Back face: heading + bullet points */}
       <div className={styles.cardBack}>
         <p className={styles.backHeading}>How I used this skill</p>
         <ul className={styles.points}>
@@ -166,16 +165,64 @@ function SkillCard({skill, iconBasePath}: SkillCardProps): ReactNode {
 
 export default function MySkills(): ReactNode {
   const iconBasePath = useBaseUrl('img/skills/');
+  const [activeSlide, setActiveSlide] = useState(0);
+  const touchStartX = useRef<number>(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (delta < -50 && activeSlide < slides.length - 1) {
+      setActiveSlide(activeSlide + 1);
+    } else if (delta > 50 && activeSlide > 0) {
+      setActiveSlide(activeSlide - 1);
+    }
+  };
 
   return (
     <section id="my-skills" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.heading}>My skills</h2>
+
+        {/* Desktop / tablet grid */}
         <div className={styles.grid}>
           {skills.map((skill) => (
             <SkillCard key={skill.title} skill={skill} iconBasePath={iconBasePath} />
           ))}
         </div>
+
+        {/* Mobile carousel */}
+        <div className={styles.carousel}>
+          <div
+            className={styles.carouselTrack}
+            style={{transform: `translateX(-${activeSlide * 100}%)`}}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            {slides.map((slideSkills, idx) => (
+              <div key={idx} className={styles.carouselSlide}>
+                {slideSkills.map((skill) => (
+                  <SkillCard key={skill.title} skill={skill} iconBasePath={iconBasePath} />
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Dot indicators */}
+          <div className={styles.dots}>
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                className={idx === activeSlide ? styles.dotActive : styles.dot}
+                onClick={() => setActiveSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

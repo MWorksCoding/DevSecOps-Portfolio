@@ -54,22 +54,22 @@ const config: Config = {
       },
       items: [
         {
-          href: '/#about-me',
+          href: '/DevSecOps-Portfolio/#about-me',
           label: 'About me',
           position: 'left',
         },
         {
-          href: '/#my-skills',
+          href: '/DevSecOps-Portfolio/#my-skills',
           label: 'My skills',
           position: 'left',
         },
         {
-          href: '/#my-projects',
+          href: '/DevSecOps-Portfolio/#my-projects',
           label: 'My projects',
           position: 'left',
         },
         {
-          href: '/#contact',
+          href: '/DevSecOps-Portfolio/#contact',
           label: 'Contact',
           position: 'left',
         },

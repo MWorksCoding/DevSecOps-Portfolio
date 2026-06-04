@@ -94,9 +94,9 @@ export default function MyProjects(): ReactNode {
     <section id="my-projects" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.heading}>My project highlights</h2>
-        <div className={styles.layout}>
 
-          {/* Left: numbered project list */}
+        {/* ── Desktop: interactive list + card panel ── */}
+        <div className={styles.layout}>
           <nav className={styles.list}>
             {projects.map((project, idx) => (
               <button
@@ -113,7 +113,6 @@ export default function MyProjects(): ReactNode {
             </Link>
           </nav>
 
-          {/* Right: active project card */}
           <div className={styles.card}>
             <div className={styles.cardTop}>
               <h3 className={styles.cardTitle}>{active.title}</h3>
@@ -148,8 +147,61 @@ export default function MyProjects(): ReactNode {
               </a>
             </div>
           </div>
-
         </div>
+
+        {/* ── Mobile: first 3 projects as stacked cards ── */}
+        <div className={styles.mobileView}>
+          {projects.slice(0, 3).map((project, idx) => (
+            <div key={project.title} className={styles.mobileCard}>
+              <div className={styles.cardTop}>
+                <h3 className={styles.cardTitle}>
+                  {idx + 1}. {project.title}
+                </h3>
+                <div className={styles.tags}>
+                  {project.tags.map((tag) => (
+                    <span key={tag.label} className={styles.tag}>
+                      <img src={iconBase + tag.iconFile} alt={tag.label} className={styles.tagIcon} />
+                      {tag.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <img
+                src={iconBase + project.thumbFile}
+                alt={project.title}
+                className={styles.mobileThumbnail}
+              />
+              <p className={styles.description}>{project.description}</p>
+              <div className={styles.cardActions}>
+                <Link to={project.docsHref} className={styles.docsBtn}>
+                  Documentation
+                </Link>
+                <a
+                  href={project.githubHref}
+                  className={styles.githubBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+          ))}
+
+          <p className={styles.mobileIntro}>
+            These three projects cover the core pillars of this portfolio — deployment,
+            automation, and security. Each one presented its own real-world challenges,
+            from configuring containerised application stacks to analysing vulnerabilities
+            from an attacker's perspective. If you'd like to explore the implementation
+            details, architecture decisions, or security findings behind each project,
+            the full documentation is just one click away.
+          </p>
+
+          <Link to="/docs/projects/v-server-setup" className={styles.moreLink}>
+            ↳ see more projects
+          </Link>
+        </div>
+
       </div>
     </section>
   );

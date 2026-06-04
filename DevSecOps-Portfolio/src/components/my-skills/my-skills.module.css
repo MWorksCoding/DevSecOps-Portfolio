@@ -72,7 +72,7 @@
 }
 
 .backHeading {
-  font-size: 1.25rem; 
+  font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 0.25rem;
@@ -86,12 +86,12 @@
 
 .points li {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.92);
+  color: #ffffff;
   padding-left: 1.1rem;
   position: relative;
   margin-bottom: 0.4rem;
   line-height: 1.5;
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .points li::before {
@@ -177,14 +177,110 @@
   }
 }
 
-/* ── Mobile: 1 column, static layout (no hover flip) ── */
+/* ── Carousel (mobile only) ──────────────────────────── */
+.carousel {
+  display: none;
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.carouselSlide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+.dot,
+.dotActive {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.dot {
+  background-color: rgba(128, 128, 128, 0.35);
+}
+
+.dotActive {
+  background-color: #ffffff;
+}
+
+/* ── Mobile: carousel replaces grid ─────────────────── */
 @media (max-width: 600px) {
   .section {
     padding: 3rem 1.5rem;
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    display: none;
+  }
+
+  .carousel {
+    display: block;
+    overflow: hidden;
+  }
+
+  /* The slide itself is the single card */
+  .carouselSlide {
+    background-color: var(--portfolio-skill-card);
+    border-radius: 16px;
+    padding: 0.5rem 0;
+    gap: 0;
+  }
+
+  /* Individual skill rows — no separate card background */
+  .carouselSlide .card {
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border-radius: 0;
+    min-height: unset;
+    overflow: visible;
+  }
+
+  .carouselSlide .card:last-child {
+    border-bottom: none;
+  }
+
+  /* Icon + title: left column */
+  .carouselSlide .cardFront {
+    position: static;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    flex-shrink: 0;
+    padding: 1rem 0.5rem;
+    opacity: 1 !important;
+  }
+
+  /* Bullet points: right column */
+  .carouselSlide .cardBack {
+    position: static;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 1rem 1rem 0;
+    opacity: 1 !important;
+    font-size: 0.7rem;
   }
 
   /* Reset positioning — stack front and back naturally */
@@ -199,7 +295,6 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 1.25rem 1.25rem 0;
-    gap: 1rem;
     opacity: 1 !important;
   }
 
@@ -245,9 +340,8 @@
   }
 
   .label {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    text-align: left;
     flex: 1;
     padding-top: 0.15rem;
   }
@@ -257,10 +351,12 @@
   }
 
   .points li {
-    color: var(--ifm-font-color-base);
+    margin-bottom: 0px;
+    color: var(--ifm-heading-color);
   }
 
   .points li::before {
-    color: var(--portfolio-blue);
+    color: #ffffff;
+    color: var(--ifm-heading-color);;
   }
 }

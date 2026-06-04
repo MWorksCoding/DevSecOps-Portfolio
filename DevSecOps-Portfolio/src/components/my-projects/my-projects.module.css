@@ -42,24 +42,21 @@
   padding: 0.35rem 0;
   font-size: 1rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.75);
+  color: #ffffff;
   transition: color 0.15s;
   width: 100%;
 }
 
 .listItem:hover {
-  color: #ffffff;
+  text-decoration: underline;
 }
 
 .activeItem {
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: 700;
+  color: var(--ifm-background-color);
 }
 
 .itemNumber {
-  opacity: 0.7;
-  font-size: 0.9em;
+  font-size: 1.0em;
 }
 
 .moreLink {
@@ -194,38 +191,52 @@
   color: #ffffff;
 }
 
-/* ── Mobile ──────────────────────────────────────────── */
+/* ── Mobile view (hidden on desktop) ────────────────────── */
+.mobileView {
+  display: none;
+}
+
+.mobileCard {
+  background-color: var(--portfolio-skill-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.mobileThumbnail {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: top;
+  max-height: 180px;
+}
+
+.mobileIntro {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0.5rem 0 1.25rem;
+  font-weight: 600;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 996px) {
+  /* Hide desktop layout, show mobile cards */
   .layout {
-    grid-template-columns: 1fr;
+    display: none;
   }
 
-  .list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .mobileView {
+    display: block;
   }
 
-  .listItem,
-  .activeItem {
-    padding: 0.4rem 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    font-size: 1.2rem;
-    width: auto;
-  }
-
-  .activeItem {
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .cardBody {
-    flex-direction: column;
-  }
-
-  .thumbnail {
-    width: 100%;
-    object-position: top;
+  .mobileView .moreLink {
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
   }
 }
 
@@ -235,7 +246,7 @@
   }
 
   .cardActions {
-    justify-content: flex-start;
+    justify-content: space-between;
   }
 
   .description {
