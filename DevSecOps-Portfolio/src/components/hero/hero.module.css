@@ -1,0 +1,142 @@
+.hero {
+  background-color: var(--portfolio-blue);
+  padding: 5rem 2rem 5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+/* ── Text column ─────────────────────────────────────── */
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.greeting {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.name {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.4rem;
+  line-height: 1.05;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+.bio {
+  font-size: 1.20rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2rem;
+  max-width: 580px;
+  font-weight: 600;
+}
+
+.ctaButton {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--portfolio-blue);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.ctaButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: var(--portfolio-blue);
+}
+
+/* ── Photo column ─────────────────────────────────────── */
+.photoWrapper {
+  flex-shrink: 0;
+}
+
+.photo {
+  width: 400px;
+  height: 480px;
+  object-fit: contain;
+  border-radius: 20px;
+  padding: 20px 20px 0 20px;
+  background: linear-gradient(to bottom, #266ad9 5%, #ffffff 85%);
+  display: block;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 996px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  /* Dissolve the .text wrapper so its children join the flex column */
+  .text {
+    display: contents;
+  }
+
+  /* Order: greeting/name/title → photo → bio/button */
+  .textTop {
+    order: 1;
+    width: 100%;
+  }
+
+  .photoWrapper {
+    order: 2;
+  }
+
+  .textBottom {
+    order: 3;
+    width: 100%;
+  }
+
+  .bio {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .photo {
+    height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .name {
+    font-size: 2.75rem;
+  }
+
+  .photo {
+    height: 180px;
+    border-radius: 14px;
+  }
+}

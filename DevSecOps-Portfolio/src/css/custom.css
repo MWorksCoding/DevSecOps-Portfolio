@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --ifm-font-family-base: 'Quicksand', sans-serif;
+  --ifm-heading-font-family: 'Quicksand', sans-serif;
+  --ifm-font-family-monospace: 'Quicksand', sans-serif;
+  --ifm-font-weight-base: 600;
+  --ifm-color-primary: #266ad9;
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --portfolio-blue: #266ad9;
+  --portfolio-dark: #1b2333;
+  --portfolio-dark-card: #262e34;
+  --portfolio-skill-card: #eef2ff;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #266ad9;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --portfolio-skill-card: #313E47;
+  --ifm-background-color: #262e34;
+}
+
+/* ── Smooth scroll ──────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Navbar ─────────────────────────────────────────── */
+.navbar {
+  background-color: var(--portfolio-blue);
+  box-shadow: none;
+  border-bottom: none;
+}
+
+/* Align navbar content with the 1200px max-width of all other sections */
+.navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.navbar__brand,
+.navbar__title,
+.navbar__link,
+.navbar__item {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.navbar__item {
+  margin: 2px 8px;
+  /* padding: 2px 8px; */
+}
+
+.navbar__link {
+  border-bottom: 2px solid transparent;
+}
+
+.navbar__link:hover {
+  border-bottom-color: #ffffff;
+}
+
+.navbar__toggle {
+  color: #ffffff !important;
+}
+
+.navbar__toggle svg {
+  fill: #ffffff;
+  color: #ffffff !important;
+}
+
+/* Color-mode toggle icon always white — scoped to right items only */
+.navbar__items--right .clean-btn svg {
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+/* ── Dark/light mode toggle in mobile sidebar ───────────── */
+.navbar-sidebar [class*="toggleButton"],
+.navbar-sidebar [class*="toggleButton"]:hover,
+.navbar-sidebar [class*="toggleButton"]:focus {
+  color: #266ad9 !important;
+}
+
+.navbar-sidebar [class*="toggleButton"] svg {
+  color: #266ad9 !important;
+  fill: #266ad9 !important;
+}
+
+/* ── Mobile navbar ───────────────────────────────────────── */
+@media (max-width: 996px) {
+  /* Hamburger on the right */
+  .navbar__toggle {
+    order: 2;
+    margin-left: auto;
+  }
+
+  /* Hide GitHub / color-mode toggle — sidebar handles navigation */
+  .navbar__items--right {
+    display: none;
+  }
+}
+
+/* ── Mobile sidebar ──────────────────────────────────────── */
+
+/* Drop from top, full width, white */
+.navbar-sidebar {
+  background-color: #ffffff !important;
+  width: 100% !important;
+  bottom: auto !important;
+  transform: translate3d(0, -100%, 0) !important;
+  padding: 0 0 2.5rem !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-sidebar--show .navbar-sidebar {
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
+}
+
+/* Header row: hide brand, keep only the close button */
+.navbar-sidebar__brand {
+  justify-content: flex-end !important;
+  border-bottom: none !important;
+  padding: 1rem 1.5rem !important;
+  background: #ffffff !important;
+}
+
+.navbar-sidebar .navbar__brand {
+  display: none !important;
+}
+
+/* Close button — blue X (icon uses stroke, not fill) */
+.navbar-sidebar__close {
+  color: var(--portfolio-blue) !important;
+}
+
+.navbar-sidebar__close svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.navbar-sidebar__close svg path,
+.navbar-sidebar__close svg g {
+  stroke: var(--portfolio-blue) !important;
+  fill: var(--portfolio-blue) !important;
+}
+
+/* Ensure both panels sit side-by-side so only one is visible at a time */
+.navbar-sidebar__items {
+  /* overflow: hidden; */
+}
+
+.navbar-sidebar__item {
+  min-width: 100%;
+}
+
+/* Full-width sidebar needs 100% offset instead of the fixed sidebar-width variable */
+.navbar-sidebar__items--show-secondary {
+  transform: translate3d(calc(100% * -1), 0, 0);
+}
+
+/* Nav links: centered, large, blue */
+.navbar-sidebar .menu__list {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+}
+
+.navbar-sidebar .menu__list-item {
+  width: 100% !important;
+}
+
+.navbar-sidebar .menu__link,
+.navbar-sidebar .navbar__link {
+  color: var(--portfolio-blue) !important;
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  justify-content: center !important;
+  padding: 0.85rem 2rem !important;
+  background: none !important;
+  border-radius: 0 !important;
+  transition: opacity 0.15s !important;
+}
+
+.navbar-sidebar .menu__link:hover,
+.navbar-sidebar .navbar__link:hover,
+.navbar-sidebar .menu__link--active {
+  background: none !important;
+  opacity: 0.65 !important;
+  color: var(--portfolio-blue) !important;
+}
+
+/* ── Docs sidebar links (secondary panel) ────────────────── */
+
+/* Base reset for all items in the docs panel */
+.navbar-sidebar__item:nth-child(2) .menu__link {
+  font-size: 1rem !important;
+  padding: 0.5rem 2rem !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* Category titles (Projects, Conduit, OWASP Juice Shop) — not real links */
+
+/* Actual clickable links — blue and indented */
+.navbar-sidebar__item:nth-child(2) .menu__link:not(.menu__link--sublist) {
+  color: #266ad9 !important;
+  padding-left: 3rem !important;
+}
+
+/* Navbar brand: M [logo] K */
+.navbar__brand::before {
+  content: 'M';
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-right: 0.15rem;
+}
+
+.navbar-sidebar__back {
+    color: var(--portfolio-blue) !important;
+    font-size: 1rem;
+}
+
+.navbar-sidebar__item:nth-child(2) [class*="categoryLinkLabel"],
+.navbar-sidebar__item:nth-child(2) [class*="categoryLinkLabel"]:hover,
+.navbar-sidebar__item:nth-child(2) [class*="categoryLinkLabel"]:active,
+.navbar-sidebar__item:nth-child(2) [class*="categoryLinkLabel"]:focus {
+  display: flex !important;
+  color: #262e34 !important;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.footer,
+.footer--dark {
+  background-color: var(--ifm-background-color) !important;
+  padding: 1.5rem 0;
+}
+
+/* In light mode, override the CSS variables Docusaurus sets on .footer--dark
+   so that text is dark on the white background */
+[data-theme='light'] .footer--dark {
+  --ifm-footer-link-color: #1c1e21;
+  --ifm-footer-title-color: #1c1e21;
+  --ifm-footer-color: #1c1e21;
+}
+
+.footer--dark .footer__title,
+.footer--dark .footer__link-item,
+.footer__title,
+.footer__link-item {
+  color: var(--ifm-footer-link-color) !important;
+}
+
+.footer--dark .footer__copyright,
+.footer__copyright {
+  color: var(--ifm-footer-color) !important;
+}

@@ -1,0 +1,362 @@
+.section {
+  padding: 5rem 2rem;
+  background-color: var(--ifm-background-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: var(--ifm-heading-color);
+}
+
+/* ── Grid (desktop: 3 × 3) ───────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Card shell ──────────────────────────────────────── */
+.card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--portfolio-skill-card);
+  border-radius: 16px;
+  min-height: 180px;
+  transition: background-color 0.25s ease;
+  cursor: default;
+}
+
+/* ── Front face (icon + label) ───────────────────────── */
+.cardFront {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 1.25rem;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* ── Back face (heading + bullets) ───────────────────── */
+.cardBack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 1.75rem;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+/* ── Hover state ─────────────────────────────────────── */
+.card:hover {
+  background-color: #266ad9;
+}
+
+.card:hover .cardFront {
+  opacity: 0;
+}
+
+.card:hover .cardBack {
+  opacity: 1;
+}
+
+.backHeading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.25rem;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.points li {
+  font-size: 0.9rem;
+  color: #ffffff;
+  padding-left: 1.1rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.points li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ── Icon ────────────────────────────────────────────── */
+.iconWrapper {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Custom icons ────────────────────────────────────── */
+.terminalIcon {
+  width: 64px;
+  height: 64px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.terminalPrompt {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1b2333;
+  letter-spacing: -1px;
+}
+
+.yamlIcon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.yamlTop {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #cc2936;
+  letter-spacing: -1px;
+}
+
+.yamlBottom {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--ifm-font-color-base);
+  letter-spacing: -1px;
+}
+
+/* ── Tablet: 2 columns ───────────────────────────────── */
+@media (max-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Carousel (mobile only) ──────────────────────────── */
+.carousel {
+  display: none;
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.carouselSlide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+.dot,
+.dotActive {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.dot {
+  background-color: rgba(128, 128, 128, 0.35);
+}
+
+.dotActive {
+  background-color: #ffffff;
+}
+
+/* ── Mobile: carousel replaces grid ─────────────────── */
+@media (max-width: 600px) {
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .grid {
+    display: none;
+  }
+
+  .carousel {
+    display: block;
+    overflow: hidden;
+  }
+
+  /* The slide itself is the single card */
+  .carouselSlide {
+    background-color: var(--portfolio-skill-card);
+    border-radius: 16px;
+    padding: 0.5rem 0;
+    gap: 0;
+  }
+
+  /* Individual skill rows — no separate card background */
+  .carouselSlide .card {
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border-radius: 0;
+    min-height: unset;
+    overflow: visible;
+  }
+
+  .carouselSlide .card:last-child {
+    border-bottom: none;
+  }
+
+  /* Icon + title: left column */
+  .carouselSlide .cardFront {
+    position: static;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    flex-shrink: 0;
+    padding: 1rem 0.5rem;
+    opacity: 1 !important;
+  }
+
+  /* Bullet points: right column */
+  .carouselSlide .cardBack {
+    position: static;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 1rem 1rem 0;
+    opacity: 1 !important;
+    font-size: 0.7rem;
+  }
+
+  /* Reset positioning — stack front and back naturally */
+  .card {
+    min-height: unset;
+    overflow: visible;
+  }
+
+  .cardFront {
+    position: static;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.25rem 1.25rem 0;
+    opacity: 1 !important;
+  }
+
+  .cardBack {
+    position: static;
+    padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+    opacity: 1 !important;
+  }
+
+  .card:hover {
+    background-color: var(--portfolio-skill-card);
+  }
+
+  .iconWrapper {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .terminalIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .terminalPrompt {
+    font-size: 1rem;
+  }
+
+  .yamlIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .yamlTop,
+  .yamlBottom {
+    font-size: 1.1rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex: 1;
+    padding-top: 0.15rem;
+  }
+
+  .backHeading {
+    display: none;
+  }
+
+  .points li {
+    margin-bottom: 0px;
+    color: var(--ifm-heading-color);
+  }
+
+  .points li::before {
+    color: #ffffff;
+    color: var(--ifm-heading-color);;
+  }
+}
